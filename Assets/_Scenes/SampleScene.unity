@@ -2307,7 +2307,7 @@ Tilemap:
   - first: {x: 5, y: -3, z: 0}
     second:
       m_TileIndex: 10
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2704,10 +2704,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300050, guid: 66e4da0c99de5f14bba63dc16a627fd2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300050, guid: 66e4da0c99de5f14bba63dc16a627fd2, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 74
     m_Data:
@@ -2919,7 +2919,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4918179103936524, guid: 67a8a793b31bfac4694a7e8d28262d10, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.25
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 4918179103936524, guid: 67a8a793b31bfac4694a7e8d28262d10, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2977,6 +2977,23 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67a8a793b31bfac4694a7e8d28262d10, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1855627515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586616015379518, guid: 67a8a793b31bfac4694a7e8d28262d10,
+    type: 2}
+  m_PrefabInternal: {fileID: 1405143200}
+--- !u!114 &1855627516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855627515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06ac2994418da84b898f0082f165055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 5
 --- !u!1 &2108677677
 GameObject:
   m_ObjectHideFlags: 0
