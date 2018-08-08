@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
-    [SerializeField] float runSpeed = 5f;
+    [SerializeField] float m_runSpeed = 5f;
 
     Rigidbody2D m_rigidbody;
 
@@ -17,12 +17,22 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Run();
+        FlipSprite();
 	}
 
     void Run ()
     {
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");   // value is between -1 to +1
-        Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, m_rigidbody.velocity.y);
+        Vector2 playerVelocity = new Vector2(controlThrow * m_runSpeed, m_rigidbody.velocity.y);
         m_rigidbody.velocity = playerVelocity;
+    }
+
+    void FlipSprite ()
+    {
+        bool hasHorizontalSpeed = Mathf.Abs(m_rigidbody.velocity.x) > Mathf.Epsilon;
+        if (hasHorizontalSpeed)
+        {
+            transform.localScale = new Vector2(Mathf.Sign(m_rigidbody.velocity.x), 1f);
+        }
     }
 }
