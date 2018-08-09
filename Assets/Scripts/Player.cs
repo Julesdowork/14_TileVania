@@ -5,26 +5,36 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
+    // Config
     [SerializeField] float m_runSpeed = 5f;
 
-    Rigidbody2D m_rigidbody;
+    // State
+    bool isAlive = true;
 
-	// Use this for initialization
+    // Cached component references
+    Rigidbody2D m_rigidbody;
+    Animator m_animator;
+    
+    // Messages
 	void Start () {
         m_rigidbody = GetComponent<Rigidbody2D>();
+        m_animator = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         Run();
         FlipSprite();
 	}
 
+    // Methods
     void Run ()
     {
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal");   // value is between -1 to +1
         Vector2 playerVelocity = new Vector2(controlThrow * m_runSpeed, m_rigidbody.velocity.y);
         m_rigidbody.velocity = playerVelocity;
+
+        bool hasHorizontalSpeed = Mathf.Abs(m_rigidbody.velocity.x) > Mathf.Epsilon;
+        m_animator.SetBool("Running", hasHorizontalSpeed);
     }
 
     void FlipSprite ()
