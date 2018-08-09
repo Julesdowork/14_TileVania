@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 95965845695913868}
   - component: {fileID: 50253485092181092}
   - component: {fileID: 70019447723262962}
-  m_Layer: 0
+  - component: {fileID: 114714036302481790}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1586616015379518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.17, y: 0, z: 0}
+  m_LocalPosition: {x: -0.13, y: 4.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,8 +62,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!70 &70019447723262962
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -75,8 +76,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: -0.06, y: -0.12}
+  m_Size: {x: 0.45, y: 0.77}
   m_Direction: 0
 --- !u!95 &95965845695913868
 Animator:
@@ -96,6 +97,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114714036302481790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586616015379518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06ac2994418da84b898f0082f165055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runSpeed: 5
+  m_jumpSpeed: 25
+  m_climbSpeed: 5
 --- !u!212 &212832158665964568
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -129,7 +144,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1241018333
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300010, guid: 261e8da7b56c8c64db509169af25c9db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
