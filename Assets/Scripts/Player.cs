@@ -62,6 +62,7 @@ public class Player : MonoBehaviour {
 
     void Jump ()
     {
+        // TODO: use a downward raycast to check if ground is below the player
         if (!m_collider2d.IsTouchingLayers(LayerMask.GetMask("Ground")))
             return;
 
