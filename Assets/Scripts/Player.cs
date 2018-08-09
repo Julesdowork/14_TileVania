@@ -16,14 +16,17 @@ public class Player : MonoBehaviour {
     // Cached component references
     Rigidbody2D m_rigidbody;
     Animator m_animator;
-    Collider2D m_collider2d;
+    CapsuleCollider2D m_bodyCollider;
+    BoxCollider2D m_feetCollider;
     float gravityScaleAtStart;
 
     // Messages
     void Start () {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
-        m_collider2d = GetComponent<Collider2D>();
+        m_bodyCollider = GetComponent<CapsuleCollider2D>();
+        m_feetCollider = GetComponent<BoxCollider2D>();
+        print(m_feetCollider);
 
         gravityScaleAtStart = m_rigidbody.gravityScale;
 	}
@@ -34,11 +37,6 @@ public class Player : MonoBehaviour {
         FlipSprite();
         Climb();
 	}
-
-    void OnTriggerEnter2D (Collider2D other)
-    {
-        print("Triggered by " + other.name);
-    }
 
     // Methods
     void Run ()
@@ -63,7 +61,7 @@ public class Player : MonoBehaviour {
     void Jump ()
     {
         // TODO: use a downward raycast to check if ground is below the player
-        if (!m_collider2d.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!m_feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             return;
 
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
@@ -75,7 +73,7 @@ public class Player : MonoBehaviour {
 
     void Climb ()
     {
-        if (!m_collider2d.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (!m_feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             m_animator.SetBool("Climbing", false);
             m_rigidbody.gravityScale = gravityScaleAtStart;
