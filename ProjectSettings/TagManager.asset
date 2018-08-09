@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Climbing
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 677344445
+    locked: 0
+  - name: Climbing
+    uniqueID: 3020202033
     locked: 0
   - name: Player
     uniqueID: 1241018333
