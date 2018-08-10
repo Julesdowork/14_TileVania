@@ -27,7 +27,7 @@ public class LevelExit : MonoBehaviour {
         yield return new WaitForSecondsRealtime(levelLoadDelay);
         Time.timeScale = 1f;
 
-        var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }
