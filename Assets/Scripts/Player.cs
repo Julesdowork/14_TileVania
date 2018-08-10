@@ -41,16 +41,6 @@ public class Player : MonoBehaviour {
         Die();
 	}
 
-    void OnCollisionEnter2D (Collision2D other)
-    {
-        print("Collided with " + other.gameObject.name);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        print("Triggered by " + other.name);
-    }
-
     // Methods
     void Run ()
     {
@@ -111,5 +101,10 @@ public class Player : MonoBehaviour {
             m_animator.SetTrigger("Dying");
             m_rigidbody.velocity = deathKick;
         }
+    }
+
+    public bool IsAlive()
+    {
+        return isAlive;
     }
 }
