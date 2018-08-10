@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     [SerializeField] float m_runSpeed = 5f;
     [SerializeField] float m_jumpSpeed = 5f;
     [SerializeField] float m_climbSpeed = 5f;
+    [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     // State
     bool isAlive = true;
@@ -26,17 +27,29 @@ public class Player : MonoBehaviour {
         m_animator = GetComponent<Animator>();
         m_bodyCollider = GetComponent<CapsuleCollider2D>();
         m_feetCollider = GetComponent<BoxCollider2D>();
-        print(m_feetCollider);
 
         gravityScaleAtStart = m_rigidbody.gravityScale;
 	}
 	
 	void Update () {
+        if (!isAlive) return;
+
         Run();
         Jump();
         FlipSprite();
         Climb();
+        Die();
 	}
+
+    void OnCollisionEnter2D (Collision2D other)
+    {
+        print("Collided with " + other.gameObject.name);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        print("Triggered by " + other.name);
+    }
 
     // Methods
     void Run ()
@@ -47,6 +60,7 @@ public class Player : MonoBehaviour {
 
         bool hasHorizontalSpeed = Mathf.Abs(m_rigidbody.velocity.x) > Mathf.Epsilon;
         m_animator.SetBool("Running", hasHorizontalSpeed);
+        print("Is running");
     }
 
     void FlipSprite ()
@@ -87,5 +101,15 @@ public class Player : MonoBehaviour {
 
         bool hasVerticalSpeed = Mathf.Abs(m_rigidbody.velocity.y) > Mathf.Epsilon;
         m_animator.SetBool("Climbing", hasVerticalSpeed);
+    }
+
+    void Die ()
+    {
+        if (m_bodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        {
+            isAlive = false;
+            m_animator.SetTrigger("Dying");
+            m_rigidbody.velocity = deathKick;
+        }
     }
 }
