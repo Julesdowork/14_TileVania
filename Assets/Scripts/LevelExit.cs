@@ -8,13 +8,6 @@ public class LevelExit : MonoBehaviour {
     [SerializeField] float levelLoadDelay = 3f;
     [SerializeField] float slowmoFactor = 0.2f;
 
-    Player player;
-
-    void Awake()
-    {
-        player = FindObjectOfType<Player>();
-    }
-
 	void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Player>().IsAlive())
